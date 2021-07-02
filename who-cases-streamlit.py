@@ -26,17 +26,15 @@ def argmax(iterable):
 # Fetch data
 url = 'https://covid19.who.int/WHO-COVID-19-global-data.csv'
 cases_file_path = "./data/who-cases.csv"
-stat = os.stat(cases_file_path)
-dt_file = date.fromtimestamp(os.path.getmtime(cases_file_path))
+# stat = os.stat(cases_file_path)
+# dt_file = date.fromtimestamp(os.path.getmtime(cases_file_path))
 
 
 @st.cache
 def get_data():
     response = requests.get(url)
-    if dt_file != date.today():
-        response = requests.get(url)
-        with open(cases_file_path, 'wb') as f:
-            f.write(response.content)
+    with open(cases_file_path, 'wb') as f:
+        f.write(response.content)
     df = pd.read_csv(cases_file_path)
     return df
 
