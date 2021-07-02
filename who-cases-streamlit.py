@@ -12,7 +12,7 @@ import requests
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from fuzzywuzzy import fuzz
-from PIL import Image
+# from PIL import Image
 
 pd.options.plotting.backend = "plotly"
 
@@ -25,7 +25,7 @@ def argmax(iterable):
 
 # Fetch data
 url = 'https://covid19.who.int/WHO-COVID-19-global-data.csv'
-cases_file_path = "./who-cases.csv"
+cases_file_path = "./data/who-cases.csv"
 stat = os.stat(cases_file_path)
 dt_file = date.fromtimestamp(os.path.getmtime(cases_file_path))
 
